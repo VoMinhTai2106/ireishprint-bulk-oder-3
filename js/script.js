@@ -656,7 +656,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('orderData', JSON.stringify(orderData));
         
         // Submit to Formspree
-        const formspreeUrl = 'https://formspree.io/f/mzzvywvn';
+        const formspreeUrl = 'https://formspree.io/f/mrblrdne';
         
         fetch(formspreeUrl, {
             method: 'POST',
