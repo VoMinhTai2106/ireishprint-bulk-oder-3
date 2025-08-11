@@ -254,7 +254,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== Form Handling =====
     const form = document.getElementById('bulk-quote-form');
     if (!form) return;
-getElementById('bulk-quote-form');
+console.log('🚫 Form handling disabled - native submission');
+
     return;
     
     // TEMPORARY: Skip complex form handling to test basic submission
