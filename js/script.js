@@ -257,11 +257,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
     // TEMPORARY: Skip complex form handling to test basic submission
-    // const skipComplexHandling = false;
-    // if (skipComplexHandling) {
-    //     console.log('Using simple form submission for testing');
-    //     return;
-    // }
+    const skipComplexHandling = false;
+    if (skipComplexHandling) {
+        console.log('Using simple form submission for testing');
+        return;
+    }
     
     // Form elements
     const quantityTiers = document.querySelectorAll('input[name="quantity_tier"]');
