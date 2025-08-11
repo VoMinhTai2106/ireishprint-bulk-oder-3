@@ -252,6 +252,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ===== Form Handling =====
+    // COMMENTED OUT FOR TESTING - Let form submit natively to Formspree
+    /*
     const form = document.getElementById('bulk-quote-form');
     if (!form) return;
     
@@ -730,6 +732,8 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.disabled = false;
         });
     });
+    */
+    // END OF COMMENTED FORM HANDLING
     
     // ===== Parallax Effects =====
     let ticking = false;
