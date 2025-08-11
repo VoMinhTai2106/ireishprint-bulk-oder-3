@@ -254,13 +254,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== Form Handling =====
     const form = document.getElementById('bulk-quote-form');
     if (!form) return;
+
     
     // TEMPORARY: Skip complex form handling to test basic submission
-    const skipComplexHandling = false;
-    if (skipComplexHandling) {
-        console.log('Using simple form submission for testing');
-        return;
-    }
+    // const skipComplexHandling = false;
+    // if (skipComplexHandling) {
+    //     console.log('Using simple form submission for testing');
+    //     return;
+    // }
     
     // Form elements
     const quantityTiers = document.querySelectorAll('input[name="quantity_tier"]');
@@ -643,17 +644,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Store form data for thank you page
-        // const orderData = {
-        //     organization: formData.get('organization'),
-        //     orderType: formData.get('order_type'),
-        //     productType: formData.get('product_type'),
-        //     totalItems: totalItemsSpan.textContent,
-        //     name: formData.get('name'),
-        //     email: formData.get('email'),
-        //     phone: formData.get('phone'),
-        //     deliveryTimeline: formData.get('delivery_timeline')
-        // };
-        // localStorage.setItem('orderData', JSON.stringify(orderData));
+        const orderData = {
+            organization: formData.get('organization'),
+            orderType: formData.get('order_type'),
+            productType: formData.get('product_type'),
+            totalItems: totalItemsSpan.textContent,
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            deliveryTimeline: formData.get('delivery_timeline')
+        };
+        localStorage.setItem('orderData', JSON.stringify(orderData));
         
         // Submit to Formspree
         const formspreeUrl = 'https://formspree.io/f/xqalwoky';
@@ -684,9 +685,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitButton.style.display = 'none';
                 
                 // Redirect after a short delay
-                // setTimeout(() => {
-                //     window.location.href = 'thank-you.html';
-                // }, 1500);
+                setTimeout(() => {
+                    window.location.href = 'thank-you.html';
+                }, 1500);
             } else {
                 // Handle error
                 throw new Error(`Submission failed with status: ${response.status}`);
