@@ -1,30 +1,31 @@
-// Greek Chapter Bulk Benefits - Premium JavaScript (FIXED VERSION)
+// Greek Chapter Bulk Benefits - FIXED VERSION (No Form JavaScript Interference)
 document.addEventListener('DOMContentLoaded', function() {
+    
+    console.log('✅ FIXED SCRIPT LOADED - Form will submit naturally to Formspree');
     
     // ===== Mobile Menu =====
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
     
-    mobileMenuBtn?.addEventListener('click', function() {
-        const isActive = this.classList.contains('active');
-        this.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        
-        // Update ARIA attributes
-        this.setAttribute('aria-expanded', !isActive);
-        mobileMenu.setAttribute('aria-hidden', isActive);
-    });
-    
-    mobileMenuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenuBtn.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            // Update ARIA attributes
-            mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            mobileMenu.setAttribute('aria-hidden', 'true');
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function() {
+            const isActive = this.classList.contains('active');
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            this.setAttribute('aria-expanded', !isActive);
+            mobileMenu.setAttribute('aria-hidden', isActive);
         });
-    });
+        
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+            });
+        });
+    }
     
     // ===== Smooth Scrolling =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -62,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
         
-        // Start counter when visible
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -84,7 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Use requestAnimationFrame for smoother animations
                 requestAnimationFrame(() => {
                     entry.target.classList.add('visible');
                 });
@@ -93,10 +92,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
     
-    // Observe elements with performance optimization
     const animatedElements = document.querySelectorAll('.reveal-text, .process-step, .pricing-card, .fade-in');
     
-    // Only observe if elements exist
     if (animatedElements.length > 0) {
         animatedElements.forEach(el => {
             scrollObserver.observe(el);
@@ -135,13 +132,11 @@ document.addEventListener('DOMContentLoaded', function() {
         dot.addEventListener('click', () => {
             currentReview = index;
             showReview(currentReview);
-            // Reset auto-rotation timer
             clearInterval(reviewInterval);
             startReviewRotation();
         });
     });
     
-    // Start auto-rotation
     function startReviewRotation() {
         if (reviewCards.length > 0) {
             reviewInterval = setInterval(() => {
@@ -161,11 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         question.addEventListener('click', () => {
             const isActive = item.classList.contains('active');
-            
-            // Close all
             faqItems.forEach(faq => faq.classList.remove('active'));
-            
-            // Toggle current
             if (!isActive) {
                 item.classList.add('active');
             }
@@ -176,7 +167,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const emailBanner = document.getElementById('email-support-banner');
     const bannerClose = document.getElementById('banner-close');
     
-    // Show banner and add body class
     if (emailBanner) {
         document.body.classList.add('has-banner');
     }
@@ -197,6 +187,8 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
     
     function showNotification() {
+        if (!socialProofContainer) return;
+        
         const notification = notifications[Math.floor(Math.random() * notifications.length)];
         const notificationEl = document.createElement('div');
         notificationEl.className = 'social-proof-notification';
@@ -217,29 +209,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
     
-    // Show notifications periodically with cleanup
     let notificationInterval;
     if (socialProofContainer) {
-        // Initial notification after 3 seconds
         const initialTimeout = setTimeout(showNotification, 3000);
-        
-        // Regular notifications every 15 seconds
         notificationInterval = setInterval(showNotification, 15000);
         
-        // Clean up on page unload
         window.addEventListener('beforeunload', () => {
             clearTimeout(initialTimeout);
             clearInterval(notificationInterval);
         });
     }
-    
-    // ===== Form Handling - COMPLETELY DISABLED FOR FORMSPREE =====
-    const form = document.getElementById('bulk-quote-form');
-    if (!form) return;
-    
-    // DISABLE ALL FORM JAVASCRIPT - LET FORM SUBMIT NATURALLY TO FORMSPREE
-    console.log('Form handling disabled - using native form submission to Formspree');
-    return;
     
     // ===== Parallax Effects =====
     let ticking = false;
@@ -264,7 +243,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // ===== Header Scroll Effect =====
     const header = document.querySelector('.header');
-    let lastScroll = 0;
     let headerTicking = false;
     
     function updateHeader() {
@@ -278,7 +256,6 @@ document.addEventListener('DOMContentLoaded', function() {
             header.style.backdropFilter = 'none';
         }
         
-        lastScroll = currentScroll;
         headerTicking = false;
     }
     
@@ -288,4 +265,13 @@ document.addEventListener('DOMContentLoaded', function() {
             headerTicking = true;
         }
     }, { passive: true });
+    
+    // ===== FORM HANDLING - COMPLETELY DISABLED =====
+    const form = document.getElementById('bulk-quote-form');
+    if (form) {
+        console.log('🚫 FORM JAVASCRIPT DISABLED - Form will submit naturally to Formspree');
+        // NO form event listeners - let form submit naturally
+    }
+    
+    console.log('✅ Script initialization complete - All features loaded except form handling');
 });
