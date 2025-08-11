@@ -252,8 +252,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ===== Form Handling =====
-    // COMMENTED OUT FOR TESTING - Let form submit natively to Formspree
-    /*
     const form = document.getElementById('bulk-quote-form');
     if (!form) return;
     
@@ -658,7 +656,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('orderData', JSON.stringify(orderData));
         
         // Submit to Formspree
-        const formspreeUrl = 'https://formspree.io/f/mrblrdne';
+        const formspreeUrl = 'https://formspree.io/f/xqalwoky';
         
         fetch(formspreeUrl, {
             method: 'POST',
@@ -732,8 +730,6 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.disabled = false;
         });
     });
-    */
-    // END OF COMMENTED FORM HANDLING
     
     // ===== Parallax Effects =====
     let ticking = false;
