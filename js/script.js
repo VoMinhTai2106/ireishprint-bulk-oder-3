@@ -255,10 +255,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('bulk-quote-form');
     if (!form) return;
     
-    // TEMPORARY: Skip complex form handling to test basic submission
-    const skipComplexHandling = false;
+    // FIXED: Skip complex form handling to allow normal Formspree submission
+    const skipComplexHandling = true; // <-- ĐÂY LÀ THAY ĐỔI DUY NHẤT
     if (skipComplexHandling) {
-        console.log('Using simple form submission for testing');
+        console.log('Using simple form submission for Formspree');
         return;
     }
     
