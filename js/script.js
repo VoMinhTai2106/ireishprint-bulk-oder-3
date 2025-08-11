@@ -254,7 +254,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== Form Handling =====
     const form = document.getElementById('bulk-quote-form');
     if (!form) return;
-
     
     // TEMPORARY: Skip complex form handling to test basic submission
     const skipComplexHandling = false;
